@@ -1,9 +1,9 @@
 package collections.models;
 
 public abstract class Sweets {
-    public String name;
-    public double weight;
-    public double sugarContent;
+    protected String name;
+    protected double weight;
+    protected double sugarContent;
 
     public Sweets(String name, double weight, double sugarContent) {
         this.name = name;

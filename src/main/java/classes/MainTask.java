@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class MainTask {
     public static void main(String[] args) throws ParseException {
-        List<Student> students = new ArrayList<Student>();
+        List<Student> students = new ArrayList<>();
         students.add(new Student(1, "Klimenkov",
                 "Dmitry",
                 "Ruhorovich",
@@ -47,18 +47,14 @@ public class MainTask {
                 1,
                 141));
 
-
         List<Student> studentsByFaculty = students.stream().filter(student -> student.getFaculty().equals("ASOI")).collect(Collectors.toList());
         System.out.println(studentsByFaculty.toString());
-
 
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse("31/12/1994");
         List<Student> studentsByBirthDate = students.stream().filter(student -> student.getBirthDate().after(date)).collect(Collectors.toList());
         System.out.println(studentsByBirthDate.toString());
 
-
         List<Student> studentsByGroup = students.stream().filter(student -> student.getGroup() == 141).collect(Collectors.toList());
         System.out.println(studentsByGroup.toString());
     }
-
 }

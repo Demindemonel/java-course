@@ -19,9 +19,6 @@ public class Main {
         System.out.println(giftBox.toString());
         System.out.println(giftBox.getBoxWeight());
         System.out.println(giftBox.sortBySweetsWeight());
-        System.out.println(giftBox.getSweetsInSugarContentRange(15.,105.));
-
+        System.out.println(giftBox.getSweetsInSugarContentRange(15., 105.));
     }
-
-
 }

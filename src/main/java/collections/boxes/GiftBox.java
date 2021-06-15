@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GiftBox {
-    private List<Sweets> box;
+    private final List<Sweets> box;
 
     public GiftBox() {
         this.box = new ArrayList<>();
     }
 
-    public void addSweets(Sweets ... sweets) {
-        if(sweets == null || sweets.length == 0) {
+    public void addSweets(Sweets... sweets) {
+        if (sweets == null || sweets.length == 0) {
             return;
         }
         this.box.addAll(Arrays.asList(sweets));

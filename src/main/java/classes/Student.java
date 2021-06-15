@@ -5,15 +5,12 @@ import java.util.Date;
 
 public class Student {
     private int id;
-
     private String lastName;
     private String firstName;
     private String middleName;
-
     private Date birthDate;
     private String address;
     private String phoneNumber;
-
     private String faculty;
     private int course;
     private int group;
@@ -111,17 +108,8 @@ public class Student {
         this.group = group;
     }
 
-    public Student(int id, String lastName, String firstName, String middleName, Date birthDate) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.birthDate = birthDate;
-    }
-
     @Override
     public String toString() {
-        //return super.toString();
         return this.lastName + " " + new SimpleDateFormat("dd/MM/yyyy").format(this.birthDate) + " " + this.faculty + " " + this.course + " " + this.group;
     }
 }
