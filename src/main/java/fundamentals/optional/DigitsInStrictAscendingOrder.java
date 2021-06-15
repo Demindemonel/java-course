@@ -19,7 +19,6 @@ public class DigitsInStrictAscendingOrder {
                 return;
             }
         }
-
     }
 
     public static boolean isOrdered(int number) {
