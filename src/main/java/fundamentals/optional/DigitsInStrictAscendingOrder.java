@@ -32,6 +32,4 @@ public class DigitsInStrictAscendingOrder {
         }
         return true;
     }
-
-
 }
