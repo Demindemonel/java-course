@@ -1,4 +1,4 @@
-package ch6.models;
+package collections.models;
 
 public abstract class Sweets {
     public String name;

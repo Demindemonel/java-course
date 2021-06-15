@@ -1,6 +1,6 @@
-package ch6.sweets;
+package collections.sweets;
 
-import ch6.models.Sweets;
+import collections.models.Sweets;
 
 public class Candy extends Sweets{
     public Candy(String name, double weight, double sugarContent) {

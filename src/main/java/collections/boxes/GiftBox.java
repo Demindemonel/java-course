@@ -1,7 +1,6 @@
-package ch6.boxes;
+package collections.boxes;
 
-import ch6.models.Sweets;
-import ch6.sweets.Candy;
+import collections.models.Sweets;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,8 +1,8 @@
-package ch3;
+package fundamentals.optional;
 
 import java.util.Scanner;
 
-public class OptionalTaskOne {
+public class DigitsInStrictAscendingOrder {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -13,8 +13,7 @@ public class OptionalTaskOne {
             System.out.println("\r\nEnter number " + (i + 1) + ": ");
             array[i] = scanner.nextInt();
         }
-        for (int number : array
-        ) {
+        for (int number : array) {
             if (isOrdered(number)) {
                 System.out.println("Ordered number is " + number);
                 return;

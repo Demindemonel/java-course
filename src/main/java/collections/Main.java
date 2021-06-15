@@ -1,10 +1,10 @@
-package ch6;
+package collections;
 
-import ch6.boxes.GiftBox;
-import ch6.sweets.Candy;
-import ch6.sweets.Chocolate;
+import collections.boxes.GiftBox;
+import collections.sweets.Candy;
+import collections.sweets.Chocolate;
 
-import static ch6.ChocolateColor.*;
+import static collections.ChocolateColor.*;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package ch6.sweets;
+package collections.sweets;
 
-import ch6.ChocolateColor;
-import ch6.models.Sweets;
+import collections.ChocolateColor;
+import collections.models.Sweets;
 
 public class Chocolate extends Sweets {
     private ChocolateColor color;

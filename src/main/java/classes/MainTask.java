@@ -1,4 +1,4 @@
-package ch4;
+package classes;
 
 import java.util.Date;
 import java.text.ParseException;

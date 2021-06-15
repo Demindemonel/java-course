@@ -1,4 +1,4 @@
-package ch6;
+package collections;
 
 public enum ChocolateColor {
     BLACK, WHITE
