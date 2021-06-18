@@ -67,5 +67,16 @@ public class Main {
         Faculty facultyTwo = new Faculty(2, "SecondFaculty", new ArrayList<Group>() {{
             add(groupThree);
         }});
+
+        University university = new University(new ArrayList<Faculty>() {
+            {
+                add(facultyOne);
+                add(facultyTwo);
+            }
+        });
+
+        System.out.println(studentFour.getAverageScore());
+        System.out.println(facultyOne.getAverageScoreForSpecificSubjectInASpecificGroup(CHEMISTRY,1));
+        System.out.println(university.getAverageScoreInASubject(CHEMISTRY));
     }
 }

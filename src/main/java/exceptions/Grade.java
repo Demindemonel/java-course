@@ -1,8 +1,8 @@
 package exceptions;
 
 public class Grade {
-    private AcademicSubject academicSubjectName;
-    private Integer grade;
+    private final AcademicSubject academicSubjectName;
+    private final Integer grade;
 
     public Grade(AcademicSubject academicSubjectName, Integer grade) {
         this.academicSubjectName = academicSubjectName;

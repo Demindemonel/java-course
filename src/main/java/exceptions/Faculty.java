@@ -1,12 +1,13 @@
 package exceptions;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Faculty {
-    private Integer facultyId;
-    private String facultyName;
-    private List<Group> groupsList;
+    private final Integer facultyId;
+    private final String facultyName;
+    private final List<Group> groupsList;
 
     public Faculty(Integer facultyId, String facultyName, List<Group> groupsList) {
         this.facultyId = facultyId;
@@ -27,10 +28,10 @@ public class Faculty {
     }
 
     public Double getAverageScoreForSpecificSubjectInASpecificGroup(AcademicSubject subject, Integer groupId) {
-        return groupsList.stream()
+        return Objects.requireNonNull(groupsList.stream()
                 .filter(group -> group.getGroupId().equals(groupId))
                 .findFirst()
-                .orElse(null)
+                .orElse(null))
                 .getStudentList().stream()
                 .flatMap(student -> student.getGrades().stream())
                 .filter(grade -> grade.getAcademicSubjectName().equals(subject))

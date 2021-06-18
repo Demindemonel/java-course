@@ -1,11 +1,10 @@
 package exceptions;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Group {
-    private Integer groupId;
-    private List<Student> studentList;
+    private final Integer groupId;
+    private final List<Student> studentList;
 
     public Group(Integer groupId, List<Student> studentList) {
         this.groupId = groupId;

@@ -3,9 +3,9 @@ package exceptions;
 import java.util.List;
 
 public class Student {
-    private Integer studentId;
-    private String studentName;
-    private List<Grade> grades;
+    private final Integer studentId;
+    private final String studentName;
+    private final List<Grade> grades;
 
     public Student(Integer studentId, String studentName, List<Grade> grades) {
         this.studentId = studentId;
