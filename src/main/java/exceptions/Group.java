@@ -19,12 +19,4 @@ public class Group {
     public List<Student> getStudentList() {
         return studentList;
     }
-
-    public List<Student> getAllStudentsInGroup(){
-        return studentList;
-    }
-
-    public void addStudentsToGroup(Student... studentToAdd){
-        Collections.addAll(studentList, studentToAdd);
-    }
 }

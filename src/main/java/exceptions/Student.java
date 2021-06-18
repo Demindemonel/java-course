@@ -1,17 +1,16 @@
 package exceptions;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Student {
     private Integer studentId;
     private String studentName;
-    private List<AcademicSubject> academicSubjectsList;
+    private List<Grade> grades;
 
-    public Student(Integer studentId, String studentName, List<AcademicSubject> academicSubjectsList) {
+    public Student(Integer studentId, String studentName, List<Grade> grades) {
         this.studentId = studentId;
         this.studentName = studentName;
-        this.academicSubjectsList = academicSubjectsList;
+        this.grades = grades;
     }
 
     public Integer getStudentId() {
@@ -22,7 +21,11 @@ public class Student {
         return studentName;
     }
 
-    public List<AcademicSubject> getAcademicSubjectsList() {
-        return academicSubjectsList;
+    public List<Grade> getGrades() {
+        return grades;
+    }
+
+    public Double getAverageScore() {
+        return grades.stream().mapToInt(Grade::getGrade).average().orElse(Double.NaN);
     }
 }
