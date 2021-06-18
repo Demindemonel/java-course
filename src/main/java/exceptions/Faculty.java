@@ -27,11 +27,16 @@ public class Faculty {
     }
 
     public Double getAverageScoreForSpecificSubjectInASpecificGroup(AcademicSubject subject, Integer groupId) {
-        Group specificGroup = groupsList.stream().filter(group -> group.getGroupId().equals(groupId)).findFirst().orElse(null);
-        List<Grade> gradesList = specificGroup.getStudentList().stream()
+        return groupsList.stream()
+                .filter(group -> group.getGroupId().equals(groupId))
+                .findFirst()
+                .orElse(null)
+                .getStudentList().stream()
                 .flatMap(student -> student.getGrades().stream())
                 .filter(grade -> grade.getAcademicSubjectName().equals(subject))
-                .collect(Collectors.toList());
-        return gradesList.stream().mapToInt(Grade::getGrade).average().orElse(Double.NaN);
+                .collect(Collectors.toList()).stream()
+                .mapToInt(Grade::getGrade)
+                .average()
+                .orElse(Double.NaN);
     }
 }
