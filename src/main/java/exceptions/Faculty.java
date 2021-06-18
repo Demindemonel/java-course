@@ -1,5 +1,7 @@
 package exceptions;
 
+import exceptions.exception.FacultyDoesNotHaveGroupsException;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -12,6 +14,8 @@ public class Faculty {
     public Faculty(Integer facultyId, String facultyName, List<Group> groupsList) {
         this.facultyId = facultyId;
         this.facultyName = facultyName;
+        if (groupsList == null || groupsList.isEmpty() || groupsList.stream().anyMatch(Objects::isNull))
+            throw new FacultyDoesNotHaveGroupsException();
         this.groupsList = groupsList;
     }
 

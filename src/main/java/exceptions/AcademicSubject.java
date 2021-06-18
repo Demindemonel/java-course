@@ -1,5 +1,5 @@
 package exceptions;
 
 public enum AcademicSubject {
-    MATHEMATICS,PHYSICS, CHEMISTRY
+    MATHEMATICS, PHYSICS, CHEMISTRY
 }

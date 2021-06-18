@@ -1,12 +1,17 @@
 package exceptions;
 
+import exceptions.exception.UniversityDoesNotHaveFacultiesException;
+
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class University {
     private final List<Faculty> facultiesList;
 
     public University(List<Faculty> facultiesList) {
+        if (facultiesList == null || facultiesList.isEmpty() || facultiesList.stream().anyMatch(Objects::isNull))
+            throw new UniversityDoesNotHaveFacultiesException();
         this.facultiesList = facultiesList;
     }
 

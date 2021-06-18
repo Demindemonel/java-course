@@ -76,7 +76,7 @@ public class Main {
         });
 
         System.out.println(studentFour.getAverageScore());
-        System.out.println(facultyOne.getAverageScoreForSpecificSubjectInASpecificGroup(CHEMISTRY,1));
+        System.out.println(facultyOne.getAverageScoreForSpecificSubjectInASpecificGroup(CHEMISTRY, 1));
         System.out.println(university.getAverageScoreInASubject(CHEMISTRY));
     }
 }

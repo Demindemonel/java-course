@@ -1,6 +1,9 @@
 package exceptions;
 
+import exceptions.exception.StudentDoesNotHaveSubjectsException;
+
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
     private final Integer studentId;
@@ -10,6 +13,8 @@ public class Student {
     public Student(Integer studentId, String studentName, List<Grade> grades) {
         this.studentId = studentId;
         this.studentName = studentName;
+        if (grades == null || grades.isEmpty() || grades.stream().anyMatch(Objects::isNull))
+            throw new StudentDoesNotHaveSubjectsException();
         this.grades = grades;
     }
 
