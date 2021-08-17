@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Main {
+public class PrintFolderMain {
     private static List<Integer> filenameLength = new ArrayList<>();
     private static List<Integer> filesInFolder = new ArrayList<>();
     private static int totalNumberOfFolders;
