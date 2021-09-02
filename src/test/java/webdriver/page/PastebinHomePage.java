@@ -1,6 +1,5 @@
 package webdriver.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +26,18 @@ public class PastebinHomePage extends AbstractPage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement createNewPasteButton;
 
+    @FindBy(xpath = "//li[text()='Bash']")
+    private WebElement syntaxHighlightingOption;
+
+    @FindBy(xpath = "//li[text()='10 Minutes']")
+    private WebElement pasteExpirationOption;
+
+    @FindBy(css = "div.source > ol")
+    private WebElement pasteTextAfterPasteCreation;
+
+    @FindBy(css = ".highlighted-code a")
+    private WebElement highlightedCodeAfterPasteCreation;
+
     public PastebinHomePage(WebDriver driver) {
         super(driver);
     }
@@ -48,7 +59,6 @@ public class PastebinHomePage extends AbstractPage {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(syntaxHighlighting));
         syntaxHighlighting.click();
 
-        WebElement syntaxHighlightingOption = driver.findElement(By.xpath("//li[text()='Bash']"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(syntaxHighlightingOption));
         syntaxHighlightingOption.click();
 
@@ -59,7 +69,6 @@ public class PastebinHomePage extends AbstractPage {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(pasteExpiration));
         pasteExpiration.click();
 
-        WebElement pasteExpirationOption = driver.findElement(By.xpath("//li[text()='10 Minutes']"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(pasteExpirationOption));
         pasteExpirationOption.click();
 
@@ -76,13 +85,11 @@ public class PastebinHomePage extends AbstractPage {
     }
 
     public String getPasteTextAfterPasteCreation() {
-        WebElement pasteTextAfterPasteCreation = driver.findElement(By.cssSelector("div.source > ol"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(pasteTextAfterPasteCreation));
         return pasteTextAfterPasteCreation.getText();
     }
 
     public String getHighlightedCodeAfterPasteCreation() {
-        WebElement highlightedCodeAfterPasteCreation = driver.findElement(By.cssSelector(".highlighted-code a"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(highlightedCodeAfterPasteCreation));
         return highlightedCodeAfterPasteCreation.getText();
     }
