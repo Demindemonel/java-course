@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import webdriver.waits.CustomConditions;
 
 public class GoogleCloudHomePage extends AbstractPage {
-    private static final String HOMEPAGE_URL = "https://cloud.google.com//";
+    private static final String HOMEPAGE_URL = "https://cloud.google.com/";
 
     @FindBy(xpath = "//input[@role='searchbox']")
     private WebElement searchBox;

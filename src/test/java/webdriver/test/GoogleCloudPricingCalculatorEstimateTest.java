@@ -16,8 +16,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
-        GoogleCloudHomePage googleCloudHomePage = new GoogleCloudHomePage(driver);
-        googleCloudPricingCalculatorEstimatePage = googleCloudHomePage.openPage()
+        googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Platform Pricing Calculator")
                 .getSearchResultByText()
                 .fillForm();
@@ -25,32 +24,32 @@ public class GoogleCloudPricingCalculatorEstimateTest {
 
     @Test
     public void checkEstimateVMClass() {
-        Assert.assertTrue(googleCloudPricingCalculatorEstimatePage.getEstimateVMClass().contains("regular"), "Estimate VM Class is wrong.");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateVMClass(), "VM class: regular");
     }
 
     @Test
     public void checkEstimateInstanceType() {
-        Assert.assertTrue(googleCloudPricingCalculatorEstimatePage.getEstimateInstanceType().contains("n1-standard-8"), "Estimate Instance Type is wrong.");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateInstanceType(), "Instance type: n1-standard-8");
     }
 
     @Test
     public void checkEstimateRegion() {
-        Assert.assertTrue(googleCloudPricingCalculatorEstimatePage.getEstimateRegion().contains("Frankfurt"), "Estimate Region is wrong.");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateRegion(), "Region: Frankfurt");
     }
 
     @Test
     public void checkEstimateLocalSSD() {
-        Assert.assertTrue(googleCloudPricingCalculatorEstimatePage.getEstimateLocalSSD().contains("2x375"), "Estimate Local SSD is wrong.");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateLocalSSD(), "Local SSD: 2x375 GiB\nCommitted Use Discount applied");
     }
 
     @Test
     public void checkEstimateCommitmentTerm() {
-        Assert.assertTrue(googleCloudPricingCalculatorEstimatePage.getEstimateCommitmentTerm().contains("1 Year"), "Estimate Commitment Term is wrong.");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateCommitmentTerm(), "Commitment term: 1 Year");
     }
 
     @Test
     public void checkEstimateTotalCost() {
-        Assert.assertTrue(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost().contains("270.83"), "Estimate Total Cost is wrong.");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(), "Total Estimated Cost: USD 1,083.33 per 1 month");
     }
 
 //    @AfterTest(alwaysRun = true)

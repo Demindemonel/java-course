@@ -1,15 +1,17 @@
 package webdriver.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
     @FindBy(xpath = "//*[@id='mainForm']/md-tabs/md-tabs-wrapper/md-tabs-canvas/md-pagination-wrapper/md-tab-item[1]")
     private WebElement computeEngineOption;
 
-    @FindBy(id = "input_68")
+    @FindBy(xpath = "/html/body/md-content/md-card/div/md-card-content[1]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[1]/div[1]/md-input-container/input")
     private WebElement numberOfInstancesField;
 
     @FindBy(id = "select_81")
@@ -39,7 +41,7 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     @FindBy(id = "select_95")
     private WebElement machineTypeDropdown;
 
-    @FindBy(id = "select_option_398")
+    @FindBy(xpath = "//*[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']")
     private WebElement machineTypeOption;
 
     @FindBy(xpath = "//md-checkbox[@aria-label = 'Add GPUs']")
@@ -80,6 +82,7 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
     protected GoogleCloudPricingCalculatorPage(WebDriver driver) {
         super(driver);
+        driver.manage().window().fullscreen();
     }
 
     @Override
@@ -88,10 +91,12 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     }
 
     public GoogleCloudPricingCalculatorEstimatePage fillForm() {
+        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
+        driver.switchTo().frame("myFrame");
         computeEngineOption.click();
 
-        numberOfGPUsDropdown.click();
-        numberOfGPUsOption.click();
+        numberOfInstancesField.click();
+        numberOfInstancesField.sendKeys("4");
 
         operationSystemSoftwareDropdown.click();
         operationSystemSoftwareFreeOption.click();

@@ -14,10 +14,10 @@ public class GoogleCloudPricingCalculatorEstimatePage {
     @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'Commitment term')]")
     private WebElement estimateCommitmentTerm;
 
-    @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'VM Class')]")
+    @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'VM class')]")
     private WebElement estimateVMClass;
 
-    @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'InstanceType')]")
+    @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'Instance type')]")
     private WebElement estimateInstanceType;
 
     @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'Local SSD')]")
