@@ -40,6 +40,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
     @Test
     public void checkEstimateLocalSSD() {
         Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateLocalSSD(), "Local SSD: 2x375 GiB\nCommitted Use Discount applied");
+        
     }
 
     @Test
