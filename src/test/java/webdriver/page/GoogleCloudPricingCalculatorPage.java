@@ -4,14 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
-    @FindBy(xpath = "//*[@id='mainForm']/md-tabs/md-tabs-wrapper/md-tabs-canvas/md-pagination-wrapper/md-tab-item[1]")
+    @FindBy(xpath = "//*[@id='mainForm']//md-tab-item[1]")
     private WebElement computeEngineOption;
 
-    @FindBy(xpath = "/html/body/md-content/md-card/div/md-card-content[1]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[1]/div[1]/md-input-container/input")
+    @FindBy(id = "input_68")
     private WebElement numberOfInstancesField;
 
     @FindBy(id = "select_81")
@@ -44,7 +45,7 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//*[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']")
     private WebElement machineTypeOption;
 
-    @FindBy(xpath = "//md-checkbox[@aria-label = 'Add GPUs']")
+    @FindBy(xpath = "//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']")
     private WebElement addGPUsCheckbox;
 
     @FindBy(id = "select_432")
@@ -93,43 +94,68 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     public GoogleCloudPricingCalculatorEstimatePage fillForm() {
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
         driver.switchTo().frame("myFrame");
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));
         computeEngineOption.click();
 
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfInstancesField));
         numberOfInstancesField.click();
         numberOfInstancesField.sendKeys("4");
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareDropdown));
         operationSystemSoftwareDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareFreeOption));
         operationSystemSoftwareFreeOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassDropdown));
         machineClassDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassOption));
         machineClassOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyDropdown));
         machineFamilyDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyOption));
         machineFamilyOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesDropdown));
         seriesDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesOption));
         seriesOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeDropdown));
         machineTypeDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeOption));
         machineTypeOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addGPUsCheckbox));
         addGPUsCheckbox.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsDropdown));
         numberOfGPUsDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsOption));
         numberOfGPUsOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeDropdown));
         GPUTypeDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeOption));
         GPUTypeOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDDropdown));
         localSSDDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDOption));
         localSSDOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationDropdown));
         datacenterLocationDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationOption));
         datacenterLocationOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageDropdown));
         committedUsageDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageOption));
         committedUsageOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addToEstimateButton));
         addToEstimateButton.click();
 
         return new GoogleCloudPricingCalculatorEstimatePage(driver);

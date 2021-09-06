@@ -29,7 +29,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
 
     @Test
     public void checkEstimateInstanceType() {
-        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateInstanceType(), "Instance type: n1-standard-8");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateInstanceType(), "Instance type: n1-standard-8\nCommitted Use Discount applied");
     }
 
     @Test
@@ -40,7 +40,6 @@ public class GoogleCloudPricingCalculatorEstimateTest {
     @Test
     public void checkEstimateLocalSSD() {
         Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateLocalSSD(), "Local SSD: 2x375 GiB\nCommitted Use Discount applied");
-        
     }
 
     @Test
@@ -53,9 +52,9 @@ public class GoogleCloudPricingCalculatorEstimateTest {
         Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(), "Total Estimated Cost: USD 1,083.33 per 1 month");
     }
 
-//    @AfterTest(alwaysRun = true)
-//    public void browserTearDown() {
-//        driver.quit();
-//        driver = null;
-//    }
+    @AfterTest(alwaysRun = true)
+    public void browserTearDown() {
+        driver.quit();
+        driver = null;
+    }
 }
