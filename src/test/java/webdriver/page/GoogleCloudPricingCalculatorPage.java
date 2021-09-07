@@ -83,7 +83,6 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
     protected GoogleCloudPricingCalculatorPage(WebDriver driver) {
         super(driver);
-        driver.manage().window().fullscreen();
     }
 
     @Override

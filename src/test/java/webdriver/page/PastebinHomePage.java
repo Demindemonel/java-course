@@ -45,7 +45,6 @@ public class PastebinHomePage extends AbstractPage {
     @Override
     public PastebinHomePage openPage() {
         driver.get(HOMEPAGE_URL);
-        driver.manage().window().fullscreen();
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(CustomConditions.jQueryAJAXCompleted());
         return this;
     }

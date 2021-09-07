@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import webdriver.waits.CustomConditions;
 
 public class GoogleCloudHomePage extends AbstractPage {
     private static final String HOMEPAGE_URL = "https://cloud.google.com/";
@@ -20,8 +19,7 @@ public class GoogleCloudHomePage extends AbstractPage {
     @Override
     public GoogleCloudHomePage openPage() {
         driver.get(HOMEPAGE_URL);
-        driver.manage().window().fullscreen();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);//.until(CustomConditions.jQueryAJAXCompleted());
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS);
         return this;
     }
 

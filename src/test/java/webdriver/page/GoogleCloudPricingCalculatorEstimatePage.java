@@ -1,13 +1,13 @@
 package webdriver.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GoogleCloudPricingCalculatorEstimatePage {
-    private WebDriver driver;
-
+public class GoogleCloudPricingCalculatorEstimatePage extends AbstractPage {
     @FindBy(xpath = "//*[@id='compute']//div[contains(text(),'Region')]")
     private WebElement estimateRegion;
 
@@ -26,9 +26,22 @@ public class GoogleCloudPricingCalculatorEstimatePage {
     @FindBy(xpath = "//*[@id='resultBlock']//h2[@class='md-title']/b")
     private WebElement estimateTotalCost;
 
+    @FindBy(xpath = "//*[@id='email_quote']")
+    private WebElement emailEstimateButton;
+
+    @FindBy(xpath = "//*[@id='input_515']")
+    private WebElement emailEstimateField;
+
+    @FindBy(xpath = "//button[@aria-label='Send Email']")
+    private WebElement sendEmailButton;
+
+    @Override
+    protected AbstractPage openPage() {
+        return null;
+    }
+
     public GoogleCloudPricingCalculatorEstimatePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public String getEstimateRegion() {
@@ -53,5 +66,25 @@ public class GoogleCloudPricingCalculatorEstimatePage {
 
     public String getEstimateTotalCost() {
         return estimateTotalCost.getText();
+    }
+
+    public GoogleCloudPricingCalculatorEstimatePage openEmailEstimate() {
+        emailEstimateButton.click();
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorEstimatePage fillEmailEstimateField(String email) {
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
+        driver.switchTo().frame("myFrame");
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(emailEstimateField));
+        emailEstimateField.sendKeys(email);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorEstimatePage sendEmail() {
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(sendEmailButton));
+        sendEmailButton.click();
+        return this;
     }
 }

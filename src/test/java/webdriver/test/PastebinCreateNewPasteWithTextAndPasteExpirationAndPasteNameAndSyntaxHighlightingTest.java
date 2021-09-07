@@ -20,6 +20,7 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSynt
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
         pastebinHomePage = new PastebinHomePage(driver);
         pastebinHomePage.openPage()

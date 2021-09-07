@@ -16,6 +16,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Platform Pricing Calculator")
                 .getSearchResultByText()
