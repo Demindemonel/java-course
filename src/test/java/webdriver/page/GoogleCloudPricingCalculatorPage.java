@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import webdriver.model.ComputerEngine;
 
 public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
@@ -91,6 +92,76 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     }
 
     public GoogleCloudPricingCalculatorEstimatePage fillForm() {
+        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
+        driver.switchTo().frame("myFrame");
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));
+        computeEngineOption.click();
+
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfInstancesField));
+        numberOfInstancesField.click();
+        numberOfInstancesField.sendKeys("4");
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareDropdown));
+        operationSystemSoftwareDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareFreeOption));
+        operationSystemSoftwareFreeOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassDropdown));
+        machineClassDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassOption));
+        machineClassOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyDropdown));
+        machineFamilyDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyOption));
+        machineFamilyOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesDropdown));
+        seriesDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesOption));
+        seriesOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeDropdown));
+        machineTypeDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeOption));
+        machineTypeOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addGPUsCheckbox));
+        addGPUsCheckbox.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsDropdown));
+        numberOfGPUsDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsOption));
+        numberOfGPUsOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeDropdown));
+        GPUTypeDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeOption));
+        GPUTypeOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDDropdown));
+        localSSDDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDOption));
+        localSSDOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationDropdown));
+        datacenterLocationDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationOption));
+        datacenterLocationOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageDropdown));
+        committedUsageDropdown.click();
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageOption));
+        committedUsageOption.click();
+
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addToEstimateButton));
+        addToEstimateButton.click();
+
+        return new GoogleCloudPricingCalculatorEstimatePage(driver);
+    }
+
+    public GoogleCloudPricingCalculatorEstimatePage fillForm(ComputerEngine computerEngine) {
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
         driver.switchTo().frame("myFrame");
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));

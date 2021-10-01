@@ -7,7 +7,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import webdriver.driver.DriverSingleton;
 import webdriver.page.*;
+import webdriver.service.ComputerEngineCreator;
 
 import java.util.ArrayList;
 
@@ -18,12 +20,12 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
 
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
-        driver = new ChromeDriver();
+        driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
         GoogleCloudPricingCalculatorEstimatePage googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Platform Pricing Calculator")
                 .getSearchResultByText()
-                .fillForm()
+                .fillForm()//.fillForm(ComputerEngineCreator.withSettingFromProperty())
                 .openEmailEstimate();
 
         ((JavascriptExecutor) driver).executeScript("window.open()");
@@ -48,7 +50,6 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
 
     @AfterTest(alwaysRun = true)
     public void browserTearDown() {
-        driver.quit();
-        driver = null;
+        DriverSingleton.closeDriver();
     }
 }
