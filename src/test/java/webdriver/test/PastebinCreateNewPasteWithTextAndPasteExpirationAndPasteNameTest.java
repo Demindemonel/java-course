@@ -1,10 +1,10 @@
 package webdriver.test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import webdriver.driver.DriverSingleton;
 import webdriver.page.PastebinHomePage;
 
 public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameTest {
@@ -13,7 +13,7 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameTest {
 
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
-        driver = new ChromeDriver();
+        driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
     }
 
@@ -25,7 +25,6 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameTest {
 
     @AfterTest(alwaysRun = true)
     public void browserTearDown() {
-        driver.quit();
-        driver = null;
+        DriverSingleton.closeDriver();
     }
 }

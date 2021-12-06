@@ -1,11 +1,11 @@
 package webdriver.test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import webdriver.driver.DriverSingleton;
 import webdriver.page.GoogleCloudHomePage;
 import webdriver.page.GoogleCloudPricingCalculatorEstimatePage;
 
@@ -15,7 +15,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
 
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
-        driver = new ChromeDriver();
+        driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
         googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Platform Pricing Calculator")
@@ -55,7 +55,6 @@ public class GoogleCloudPricingCalculatorEstimateTest {
 
     @AfterTest(alwaysRun = true)
     public void browserTearDown() {
-        driver.quit();
-        driver = null;
+        DriverSingleton.closeDriver();
     }
 }

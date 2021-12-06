@@ -2,13 +2,13 @@ package webdriver.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import webdriver.driver.DriverSingleton;
 import webdriver.page.PastebinHomePage;
 
 public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSyntaxHighlightingTest {
@@ -19,7 +19,7 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSynt
 
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
-        driver = new ChromeDriver();
+        driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
 
         pastebinHomePage = new PastebinHomePage(driver);
@@ -50,7 +50,6 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSynt
 
     @AfterTest(alwaysRun = true)
     public void browserTearDown() {
-        driver.quit();
-        driver = null;
+        DriverSingleton.closeDriver();
     }
 }

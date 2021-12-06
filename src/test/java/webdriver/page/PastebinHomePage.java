@@ -55,20 +55,20 @@ public class PastebinHomePage extends AbstractPage {
     }
 
     public PastebinHomePage selectSyntaxHighlighting() {
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(syntaxHighlighting));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(syntaxHighlighting));
         syntaxHighlighting.click();
 
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(syntaxHighlightingOption));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(syntaxHighlightingOption));
         syntaxHighlightingOption.click();
 
         return this;
     }
 
     public PastebinHomePage selectPasteExpiration() {
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(pasteExpiration));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(pasteExpiration));
         pasteExpiration.click();
 
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(pasteExpirationOption));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(pasteExpirationOption));
         pasteExpirationOption.click();
 
         return this;
@@ -80,6 +80,7 @@ public class PastebinHomePage extends AbstractPage {
     }
 
     public void clickCreateNewPasteButton() {
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(createNewPasteButton));
         createNewPasteButton.click();
     }
 
