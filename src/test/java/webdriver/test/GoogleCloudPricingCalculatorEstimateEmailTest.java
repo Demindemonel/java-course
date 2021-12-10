@@ -23,7 +23,7 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
         driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
         GoogleCloudPricingCalculatorEstimatePage googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
-                .searchForText("Google Cloud Platform Pricing Calculator")
+                .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
                 .fillForm()//.fillForm(ComputerEngineCreator.withSettingFromProperty())
                 .openEmailEstimate();

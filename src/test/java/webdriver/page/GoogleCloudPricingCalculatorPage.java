@@ -13,11 +13,17 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='mainForm']//md-tab-item[1]")
     private WebElement computeEngineOption;
 
-    @FindBy(id = "input_68")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Number of instances')]]/input")
     private WebElement numberOfInstancesField;
 
-    @FindBy(id = "select_81")
+    @FindBy(xpath = "//md-select[@aria-label[contains(.,'System / Software')]]")
     private WebElement operationSystemSoftwareDropdown;
+    // https://cloudpricingcalculator.appspot.com/?hl=ru
+    // здесь можно выбрать у элемента aria-owns="select_container_89", потом кликнуть,
+    // дождаться этого id="select_container_89", а его md-option записать в List<WebElement>,
+    // затем простым сравнением текста выбрать элемент
+    // такое можно провернуть для всех дропдаунов
+    // т.о. тест станет более стабильным (потому что каждый раз id у элементов) и вариативным
 
     @FindBy(id = "select_option_70")
     private WebElement operationSystemSoftwareFreeOption;
@@ -96,7 +102,6 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
         driver.switchTo().frame("myFrame");
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));
         computeEngineOption.click();
-
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfInstancesField));
         numberOfInstancesField.click();
