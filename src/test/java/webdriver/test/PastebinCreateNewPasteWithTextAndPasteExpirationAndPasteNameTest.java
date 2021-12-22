@@ -14,7 +14,6 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameTest {
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
         driver = DriverSingleton.getDriver();
-        driver.manage().window().maximize();
     }
 
     @Test
