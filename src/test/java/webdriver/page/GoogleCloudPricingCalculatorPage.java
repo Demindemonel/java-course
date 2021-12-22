@@ -16,74 +16,38 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//md-input-container[label[contains(.,'Number of instances')]]/input")
     private WebElement numberOfInstancesField;
 
-    @FindBy(xpath = "//md-select[@aria-label[contains(.,'System / Software')]]")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'System / Software')]]/md-select")
     private WebElement operationSystemSoftwareDropdown;
-    // https://cloudpricingcalculator.appspot.com/?hl=ru
-    // здесь можно выбрать у элемента aria-owns="select_container_89", потом кликнуть,
-    // дождаться этого id="select_container_89", а его md-option записать в List<WebElement>,
-    // затем простым сравнением текста выбрать элемент
-    // такое можно провернуть для всех дропдаунов
-    // т.о. тест станет более стабильным (потому что каждый раз id у элементов) и вариативным
 
-    @FindBy(id = "select_option_70")
-    private WebElement operationSystemSoftwareFreeOption;
-
-    @FindBy(id = "select_85")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Machine Class')]]/md-select")
     private WebElement machineClassDropdown;
 
-    @FindBy(id = "select_option_83")
-    private WebElement machineClassOption;
-
-    @FindBy(id = "select_91")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Machine Family')]]/md-select")
     private WebElement machineFamilyDropdown;
 
-    @FindBy(id = "select_option_87")
-    private WebElement machineFamilyOption;
-
-    @FindBy(id = "select_93")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Series')]]/md-select")
     private WebElement seriesDropdown;
 
-    @FindBy(id = "select_option_202")
-    private WebElement seriesOption;
-
-    @FindBy(id = "select_95")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Machine type')]]/md-select")
     private WebElement machineTypeDropdown;
-
-    @FindBy(xpath = "//*[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']")
-    private WebElement machineTypeOption;
 
     @FindBy(xpath = "//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']")
     private WebElement addGPUsCheckbox;
 
-    @FindBy(id = "select_432")
-    private WebElement numberOfGPUsDropdown;
-
-    @FindBy(id = "select_option_437")
-    private WebElement numberOfGPUsOption;
-
-    @FindBy(id = "select_434")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'GPU type')]]/md-select")
     private WebElement GPUTypeDropdown;
 
-    @FindBy(id = "select_option_444")
-    private WebElement GPUTypeOption;
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Number of GPUs')]]/md-select")
+    private WebElement numberOfGPUsDropdown;
 
-    @FindBy(id = "select_393")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Local SSD')]]/md-select")
     private WebElement localSSDDropdown;
 
-    @FindBy(id = "select_option_419")
-    private WebElement localSSDOption;
-
-    @FindBy(id = "select_97")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Datacenter location')]]/md-select")
     private WebElement datacenterLocationDropdown;
 
-    @FindBy(id = "select_option_219")
-    private WebElement datacenterLocationOption;
-
-    @FindBy(id = "select_104")
+    @FindBy(xpath = "//md-input-container[label[contains(.,'Committed usage')]]/md-select")
     private WebElement committedUsageDropdown;
-
-    @FindBy(id = "select_option_102")
-    private WebElement committedUsageOption;
 
     @FindBy(xpath = "//button[@aria-label='Add to Estimate']")
     private WebElement addToEstimateButton;
@@ -97,136 +61,76 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
         return null;
     }
 
-    public GoogleCloudPricingCalculatorEstimatePage fillForm() {
-        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
-        driver.switchTo().frame("myFrame");
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));
-        computeEngineOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfInstancesField));
-        numberOfInstancesField.click();
-        numberOfInstancesField.sendKeys("4");
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareDropdown));
-        operationSystemSoftwareDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareFreeOption));
-        operationSystemSoftwareFreeOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassDropdown));
-        machineClassDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassOption));
-        machineClassOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyDropdown));
-        machineFamilyDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyOption));
-        machineFamilyOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesDropdown));
-        seriesDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesOption));
-        seriesOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeDropdown));
-        machineTypeDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeOption));
-        machineTypeOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addGPUsCheckbox));
-        addGPUsCheckbox.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsDropdown));
-        numberOfGPUsDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsOption));
-        numberOfGPUsOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeDropdown));
-        GPUTypeDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeOption));
-        GPUTypeOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDDropdown));
-        localSSDDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDOption));
-        localSSDOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationDropdown));
-        datacenterLocationDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationOption));
-        datacenterLocationOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageDropdown));
-        committedUsageDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageOption));
-        committedUsageOption.click();
-
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addToEstimateButton));
-        addToEstimateButton.click();
-
-        return new GoogleCloudPricingCalculatorEstimatePage(driver);
-    }
-
     public GoogleCloudPricingCalculatorEstimatePage fillForm(ComputerEngine computerEngine) {
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
         driver.switchTo().frame("myFrame");
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));
         computeEngineOption.click();
 
-
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfInstancesField));
         numberOfInstancesField.click();
-        numberOfInstancesField.sendKeys("4");
+        numberOfInstancesField.sendKeys(computerEngine.getNumberOfInstances());
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareDropdown));
         operationSystemSoftwareDropdown.click();
+        WebElement operationSystemSoftwareFreeOption = driver.findElement(By.xpath("//*[@id='" + operationSystemSoftwareDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getOperationSystemSoftware() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(operationSystemSoftwareFreeOption));
         operationSystemSoftwareFreeOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassDropdown));
         machineClassDropdown.click();
+        WebElement machineClassOption = driver.findElement(By.xpath("//*[@id='" + machineClassDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getMachineClass() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineClassOption));
         machineClassOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyDropdown));
         machineFamilyDropdown.click();
+        WebElement machineFamilyOption = driver.findElement(By.xpath("//*[@id='" + machineFamilyDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getMachineFamily() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineFamilyOption));
         machineFamilyOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesDropdown));
         seriesDropdown.click();
+        WebElement seriesOption = driver.findElement(By.xpath("//*[@id='" + seriesDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getSeries() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(seriesOption));
         seriesOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeDropdown));
         machineTypeDropdown.click();
+        WebElement machineTypeOption = driver.findElement(By.xpath("//*[@id='" + machineTypeDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getMachineType() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(machineTypeOption));
         machineTypeOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addGPUsCheckbox));
         addGPUsCheckbox.click();
 
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsDropdown));
-        numberOfGPUsDropdown.click();
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsOption));
-        numberOfGPUsOption.click();
-
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeDropdown));
         GPUTypeDropdown.click();
+        WebElement GPUTypeOption = driver.findElement(By.xpath("//*[@id='" + GPUTypeDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getGPUType() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(GPUTypeOption));
         GPUTypeOption.click();
 
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsDropdown));
+        numberOfGPUsDropdown.click();
+        WebElement numberOfGPUsOption = driver.findElement(By.xpath("//*[@id='" + numberOfGPUsDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getNumberOfGPUs() + "')]"));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfGPUsOption));
+        numberOfGPUsOption.click();
+
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDDropdown));
         localSSDDropdown.click();
+        WebElement localSSDOption = driver.findElement(By.xpath("//*[@id='" + localSSDDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getLocalSSD() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(localSSDOption));
         localSSDOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationDropdown));
         datacenterLocationDropdown.click();
+        WebElement datacenterLocationOption = driver.findElement(By.xpath("//*[@id='" + datacenterLocationDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getDatacenterLocation() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(datacenterLocationOption));
         datacenterLocationOption.click();
 
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageDropdown));
         committedUsageDropdown.click();
+        WebElement committedUsageOption = driver.findElement(By.xpath("//*[@id='" + committedUsageDropdown.getAttribute("aria-owns") + "']//md-option[contains(.,'" + computerEngine.getCommittedUsage() + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(committedUsageOption));
         committedUsageOption.click();
 

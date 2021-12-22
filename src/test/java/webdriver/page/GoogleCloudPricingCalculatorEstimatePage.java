@@ -29,7 +29,7 @@ public class GoogleCloudPricingCalculatorEstimatePage extends AbstractPage {
     @FindBy(xpath = "//*[@id='email_quote']")
     private WebElement emailEstimateButton;
 
-    @FindBy(xpath = "//*[@id='input_515']")
+    @FindBy(xpath = "//*[@name='description'][@type='email']")
     private WebElement emailEstimateField;
 
     @FindBy(xpath = "//button[@aria-label='Send Email']")
@@ -74,7 +74,6 @@ public class GoogleCloudPricingCalculatorEstimatePage extends AbstractPage {
     }
 
     public GoogleCloudPricingCalculatorEstimatePage fillEmailEstimateField(String email) {
-        driver.switchTo().defaultContent();
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
         driver.switchTo().frame("myFrame");
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(emailEstimateField));

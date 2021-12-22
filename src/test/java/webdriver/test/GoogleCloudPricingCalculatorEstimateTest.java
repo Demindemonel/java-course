@@ -6,8 +6,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import webdriver.driver.DriverSingleton;
+import webdriver.model.ComputerEngine;
 import webdriver.page.GoogleCloudHomePage;
 import webdriver.page.GoogleCloudPricingCalculatorEstimatePage;
+import webdriver.service.ComputerEngineCreator;
 
 public class GoogleCloudPricingCalculatorEstimateTest {
     private WebDriver driver;
@@ -20,7 +22,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
         googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
-                .fillForm();
+                .fillForm(ComputerEngineCreator.withSettingByDefault());
     }
 
     @Test
@@ -50,7 +52,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
 
     @Test
     public void checkEstimateTotalCost() {
-        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(), "Total Estimated Cost: USD 1,083.33 per 1 month");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(), "Total Estimated Cost: USD 1,082.77 per 1 month");
     }
 
     @AfterTest(alwaysRun = true)

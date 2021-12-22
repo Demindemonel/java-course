@@ -9,21 +9,21 @@ public class ComputerEngine {
     private String machineFamily;
     private String series;
     private String machineType;
-    private String numberOfGPUs;
     private String GPUType;
+    private String numberOfGPUs;
     private String localSSD;
     private String datacenterLocation;
     private String committedUsage;
 
-    public ComputerEngine(String numberOfInstances, String operationSystemSoftware, String machineClass, String machineFamily, String series, String machineType, String numberOfGPUs, String GPUType, String localSSD, String datacenterLocation, String committedUsage) {
+    public ComputerEngine(String numberOfInstances, String operationSystemSoftware, String machineClass, String machineFamily, String series, String machineType, String GPUType, String numberOfGPUs, String localSSD, String datacenterLocation, String committedUsage) {
         this.numberOfInstances = numberOfInstances;
         this.operationSystemSoftware = operationSystemSoftware;
         this.machineClass = machineClass;
         this.machineFamily = machineFamily;
         this.series = series;
         this.machineType = machineType;
-        this.numberOfGPUs = numberOfGPUs;
         this.GPUType = GPUType;
+        this.numberOfGPUs = numberOfGPUs;
         this.localSSD = localSSD;
         this.datacenterLocation = datacenterLocation;
         this.committedUsage = committedUsage;
@@ -77,20 +77,20 @@ public class ComputerEngine {
         this.machineType = machineType;
     }
 
-    public String getNumberOfGPUs() {
-        return numberOfGPUs;
-    }
-
-    public void setNumberOfGPUs(String numberOfGPUs) {
-        this.numberOfGPUs = numberOfGPUs;
-    }
-
     public String getGPUType() {
         return GPUType;
     }
 
     public void setGPUType(String GPUType) {
         this.GPUType = GPUType;
+    }
+
+    public String getNumberOfGPUs() {
+        return numberOfGPUs;
+    }
+
+    public void setNumberOfGPUs(String numberOfGPUs) {
+        this.numberOfGPUs = numberOfGPUs;
     }
 
     public String getLocalSSD() {
