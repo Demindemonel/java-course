@@ -7,14 +7,15 @@ import java.util.Objects;
 
 public class Student {
     private final Integer studentId;
-    private final String studentName;
-    private final List<Grade> grades;
+    private String studentName;
+    private List<Grade> grades;
 
     public Student(Integer studentId, String studentName, List<Grade> grades) {
         this.studentId = studentId;
         this.studentName = studentName;
-        if (grades == null || grades.isEmpty() || grades.stream().anyMatch(Objects::isNull))
+        if (grades == null || grades.isEmpty() || grades.stream().anyMatch(Objects::isNull)) {
             throw new StudentDoesNotHaveSubjectsException();
+        }
         this.grades = grades;
     }
 
@@ -28,6 +29,14 @@ public class Student {
 
     public List<Grade> getGrades() {
         return grades;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setGrades(List<Grade> grades) {
+        this.grades = grades;
     }
 
     public Double getAverageScore() {

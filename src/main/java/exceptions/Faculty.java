@@ -8,14 +8,15 @@ import java.util.stream.Collectors;
 
 public class Faculty {
     private final Integer facultyId;
-    private final String facultyName;
-    private final List<Group> groupsList;
+    private String facultyName;
+    private List<Group> groupsList;
 
     public Faculty(Integer facultyId, String facultyName, List<Group> groupsList) {
         this.facultyId = facultyId;
         this.facultyName = facultyName;
-        if (groupsList == null || groupsList.isEmpty() || groupsList.stream().anyMatch(Objects::isNull))
+        if (groupsList == null || groupsList.isEmpty() || groupsList.stream().anyMatch(Objects::isNull)) {
             throw new FacultyDoesNotHaveGroupsException();
+        }
         this.groupsList = groupsList;
     }
 
@@ -31,11 +32,19 @@ public class Faculty {
         return groupsList;
     }
 
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public void setGroupsList(List<Group> groupsList) {
+        this.groupsList = groupsList;
+    }
+
     public Double getAverageScoreForSpecificSubjectInASpecificGroup(AcademicSubject subject, Integer groupId) {
         return Objects.requireNonNull(groupsList.stream()
-                .filter(group -> group.getGroupId().equals(groupId))
-                .findFirst()
-                .orElse(null))
+                        .filter(group -> group.getGroupId().equals(groupId))
+                        .findFirst()
+                        .orElse(null))
                 .getStudentList().stream()
                 .flatMap(student -> student.getGrades().stream())
                 .filter(grade -> grade.getAcademicSubjectName().equals(subject))
