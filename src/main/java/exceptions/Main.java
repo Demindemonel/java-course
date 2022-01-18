@@ -2,8 +2,6 @@ package exceptions;
 
 import exceptions.service.UniversityCreator;
 
-import java.util.ArrayList;
-
 import static exceptions.AcademicSubject.*;
 
 public class Main {
