@@ -1,12 +1,102 @@
-parent_folder
-    |-----folder_1
-    |       1.txt
-    |       2.txt
-    |       3.txt
-    |-----folder_2
-    |       4.txt
-    |       5.txt
-    |-----folder_3
-            6.txt
-            7.txt
-            8.txt
+target
+    |-----classes
+    |     |-----classes
+    |          |     MainTask.class
+    |          |     Student.class
+    |     |-----collections
+    |          |     ChocolateColor.class
+    |          |     Main.class
+    |          |-----boxes
+    |               |     GiftBox.class
+    |          |-----models
+    |               |     Sweets.class
+    |          |-----sweets
+    |               |     Candy.class
+    |               |     Chocolate.class
+    |     |-----exceptions
+    |          |     AcademicSubject.class
+    |          |     Faculty.class
+    |          |     Grade.class
+    |          |     Group.class
+    |          |     Main.class
+    |          |     Student.class
+    |          |     University.class
+    |          |-----exception
+    |               |     FacultyDoesNotHaveGroupsException.class
+    |               |     GradeOutOfBoundsException.class
+    |               |     GroupDoesNotHaveStudentsException.class
+    |               |     StudentDoesNotHaveSubjectsException.class
+    |               |     UniversityDoesNotHaveFacultiesException.class
+    |          |-----service
+    |               |     FacultiesCreator$1.class
+    |               |     FacultiesCreator$2.class
+    |               |     FacultiesCreator.class
+    |               |     GroupsCreator$1.class
+    |               |     GroupsCreator$2.class
+    |               |     GroupsCreator$3.class
+    |               |     GroupsCreator.class
+    |               |     StudentsCreator$1.class
+    |               |     StudentsCreator$2.class
+    |               |     StudentsCreator$3.class
+    |               |     StudentsCreator$4.class
+    |               |     StudentsCreator$5.class
+    |               |     StudentsCreator$6.class
+    |               |     StudentsCreator.class
+    |               |     UniversityCreator$1.class
+    |               |     UniversityCreator.class
+    |     |-----fundamentals
+    |          |-----main
+    |               |     ArgumentsReverseOrder.class
+    |               |     ArgumentsSumAndMultiplication.class
+    |               |     Greetings.class
+    |               |     MonthByNumber.class
+    |               |     RandomNumbersWithOrWithoutNewLine.class
+    |          |-----optional
+    |               |     DigitsInStrictAscendingOrder.class
+    |               |     MatrixRowsSortByColumn.class
+    |     |-----io
+    |          |-----main
+    |               |     FileOrFolderHandler.class
+    |               |     Main.class
+    |     |-----threads
+    |          |-----main
+    |               |     Car.class
+    |               |     ParkingMain.class
+    |               |     ParkingWithExecutorServiceMain.class
+    |               |     QueueMain.class
+    |               |-----models
+    |                    |     Car.class
+    |                    |     Parking.class
+    |               |-----tasks
+    |                    |     CarGenerator.class
+    |                    |     CarRemover.class
+    |-----generated-sources
+    |     |-----annotations
+    |-----generated-test-sources
+    |     |-----test-annotations
+    |-----test-classes
+    |     |     testng-smoke.xml
+    |     |-----webdriver
+    |          |-----driver
+    |               |     DriverSingleton.class
+    |          |-----model
+    |               |     ComputerEngine.class
+    |          |-----page
+    |               |     AbstractPage.class
+    |               |     GoogleCloudHomePage.class
+    |               |     GoogleCloudPricingCalculatorEstimatePage.class
+    |               |     GoogleCloudPricingCalculatorPage.class
+    |               |     GoogleCloudSearchResultPage.class
+    |               |     PastebinHomePage.class
+    |               |     YopmailGeneratedEmailMailboxPage.class
+    |               |     YopmailGeneratedEmailPage.class
+    |               |     YopmailHomePage.class
+    |          |-----service
+    |               |     ComputerEngineCreator.class
+    |          |-----test
+    |               |     GoogleCloudPricingCalculatorEstimateEmailTest.class
+    |               |     GoogleCloudPricingCalculatorEstimateTest.class
+    |               |     PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSyntaxHighlightingTest.class
+    |               |     PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameTest.class
+    |          |-----waits
+    |               |     CustomConditions.class
