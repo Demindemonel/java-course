@@ -3,7 +3,6 @@ package io.main;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class FileOrFolderHandler {
     private static List<Integer> filenameLength = new ArrayList<>();
@@ -15,31 +14,31 @@ public class FileOrFolderHandler {
     public static void readFile(File file) {
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            StringBuilder stringBuffer = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
             String line;
             int lastIndexOfFolder = 0;
             int lastIndexOfFile = 0;
             int filesInFolderCounter = 0;
             boolean isWasInFolder = false;
             while ((line = bufferedReader.readLine()) != null) {
-                stringBuffer.append(line);
-                if (stringBuffer.toString().contains("|-----")) {
-                    if (isWasInFolder && (lastIndexOfFolder <= stringBuffer.toString().lastIndexOf("|-----") || lastIndexOfFolder > stringBuffer.toString().lastIndexOf("|-----"))) {
+                builder.append(line);
+                if (builder.toString().contains("|-----")) {
+                    if (isWasInFolder && (lastIndexOfFolder <= builder.toString().lastIndexOf("|-----") || lastIndexOfFolder > builder.toString().lastIndexOf("|-----"))) {
                         filesInFolder.add(filesInFolderCounter);
                         filesInFolderCounter = 0;
                     }
-                    lastIndexOfFolder = stringBuffer.toString().lastIndexOf("|-----");
+                    lastIndexOfFolder = builder.toString().lastIndexOf("|-----");
                     isWasInFolder = true;
                     totalNumberOfFolders++;
-                } else if (stringBuffer.toString().contains("|     ")) {
-                    if (isWasInFolder && lastIndexOfFolder < stringBuffer.lastIndexOf("|     ")) {
+                } else if (builder.toString().contains("|     ")) {
+                    if (isWasInFolder && lastIndexOfFolder < builder.lastIndexOf("|     ")) {
                         filesInFolderCounter++;
                     }
-                    lastIndexOfFile = stringBuffer.toString().lastIndexOf("|     ");
+                    lastIndexOfFile = builder.toString().lastIndexOf("|     ");
                     totalNumberOfFiles++;
-                    filenameLength.add(stringBuffer.substring(stringBuffer.lastIndexOf("|     ") + 6).length());
+                    filenameLength.add(builder.substring(builder.lastIndexOf("|     ") + 6).length());
                 }
-                stringBuffer.delete(0, stringBuffer.length());
+                builder.delete(0, builder.length());
             }
             if (lastIndexOfFile > lastIndexOfFolder) {
                 filesInFolder.add(filesInFolderCounter);
@@ -72,7 +71,7 @@ public class FileOrFolderHandler {
         }
     }
 
-    private static String printIndent(int indent, Boolean isFolder) {
+    private static String printIndent(int indent, boolean isFolder) {
         StringBuilder sb = new StringBuilder();
         String indentString = isFolder ? "-----" : "     ";
         if (indent == 1) {
