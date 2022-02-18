@@ -1,7 +1,7 @@
-package threads.main.tasks;
+package threads.main.service;
 
-import threads.main.models.Car;
-import threads.main.models.Parking;
+import threads.main.model.Car;
+import threads.main.model.Parking;
 
 public class CarGenerator implements Runnable {
     private Parking parking;

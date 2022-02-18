@@ -1,4 +1,4 @@
-package threads.main.models;
+package threads.main.model;
 
 public class Car {
     private String name;
