@@ -64,8 +64,14 @@ public class GoogleCloudPricingCalculatorEstimatePage extends AbstractPage {
         return estimateLocalSSD.getText();
     }
 
-    public String getEstimateTotalCost() {
-        return estimateTotalCost.getText();
+    public String getEstimateTotalCost(boolean isGetShort) {
+        if (isGetShort) {
+            String tempEstimateTotalCost = estimateTotalCost.getText();
+            tempEstimateTotalCost = tempEstimateTotalCost.substring(tempEstimateTotalCost.indexOf("USD "), tempEstimateTotalCost.indexOf(" per"));
+            return tempEstimateTotalCost;
+        } else {
+            return estimateTotalCost.getText();
+        }
     }
 
     public GoogleCloudPricingCalculatorEstimatePage openEmailEstimate() {

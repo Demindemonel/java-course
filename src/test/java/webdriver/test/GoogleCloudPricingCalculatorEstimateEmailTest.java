@@ -16,6 +16,7 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
 
     private WebDriver driver;
     private YopmailGeneratedEmailMailboxPage yopmailGeneratedEmailMailboxPage;
+    private String totalEstimateCost;
 
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
@@ -25,7 +26,7 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
                 .getSearchResultByText()
                 .fillForm(ComputerEngineCreator.withSettingByDefault())
                 .openEmailEstimate();
-
+        totalEstimateCost = googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(true);
         ((JavascriptExecutor) driver).executeScript("window.open()");
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 
@@ -43,7 +44,7 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
 
     @Test
     public void checkTotalEstimateMonthlyCoast() {
-        Assert.assertEquals(yopmailGeneratedEmailMailboxPage.getTotalEstimateMonthlyCoastField(), "USD 1,082.77");
+        Assert.assertEquals(yopmailGeneratedEmailMailboxPage.getTotalEstimateMonthlyCoastField(), totalEstimateCost);
     }
 
     @AfterTest(alwaysRun = true)
