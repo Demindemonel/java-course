@@ -1,5 +1,6 @@
 package webdriver.page;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,9 @@ import webdriver.waits.CustomConditions;
 public class PastebinHomePage extends AbstractPage {
 
     private static final String HOMEPAGE_URL = "https://pastebin.com/";
+    private String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
+            + "var elementTop = arguments[0].getBoundingClientRect().top;"
+            + "window.scrollBy(0, elementTop-(viewPortHeight/2));";
 
     @FindBy(id = "postform-text")
     private WebElement pasteTextArea;
@@ -55,6 +59,7 @@ public class PastebinHomePage extends AbstractPage {
     }
 
     public PastebinHomePage selectSyntaxHighlighting() {
+        ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, syntaxHighlighting);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(syntaxHighlighting));
         syntaxHighlighting.click();
 
@@ -65,6 +70,7 @@ public class PastebinHomePage extends AbstractPage {
     }
 
     public PastebinHomePage selectPasteExpiration() {
+        ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, pasteExpiration);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(pasteExpiration));
         pasteExpiration.click();
 
@@ -80,6 +86,7 @@ public class PastebinHomePage extends AbstractPage {
     }
 
     public void clickCreateNewPasteButton() {
+        ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, createNewPasteButton);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(createNewPasteButton));
         createNewPasteButton.click();
     }
