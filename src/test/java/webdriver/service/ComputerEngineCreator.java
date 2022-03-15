@@ -15,32 +15,18 @@ public class ComputerEngineCreator {
     public static final String TESTDATA_DATACENTER_LOCATION = "testdata.computeengine.datacenterlocation";
     public static final String TESTDATA_COMMITTED_USAGE = "testdata.computeengine.committedusage";
 
-    public static ComputerEngine withSettingFromProperty() {
-        return new ComputerEngine(TESTDATA_NUMBER_OF_INSTANCES,
-                TESTDATA_OPERATION_SYSTEM_SOFTWARE,
-                TESTDATA_MACHINE_CLASS,
-                TESTDATA_MACHINE_FAMILY,
-                TESTDATA_SERIES,
-                TESTDATA_MACHINE_TYPE,
-                TESTDATA_GPU_TYPE,
-                TESTDATA_NUMBER_OF_GPUS,
-                TESTDATA_LOCAL_SSD,
-                TESTDATA_DATACENTER_LOCATION,
-                TESTDATA_COMMITTED_USAGE);
-    }
-
     public static ComputerEngine withSettingByDefault() {
         return new ComputerEngine(
-                "4",
-                "Free",
-                "Regular",
-                "General purpose",
-                "N1",
-                "n1-standard-8",
-                "NVIDIA Tesla P100",
-                "2",
-                "2x375 GB",
-                "Frankfurt (europe-west3)",
-                "1 Year");
+                TestDataReader.getTestData(TESTDATA_NUMBER_OF_INSTANCES),
+                TestDataReader.getTestData(TESTDATA_OPERATION_SYSTEM_SOFTWARE),
+                TestDataReader.getTestData(TESTDATA_MACHINE_CLASS),
+                TestDataReader.getTestData(TESTDATA_MACHINE_FAMILY),
+                TestDataReader.getTestData(TESTDATA_SERIES),
+                TestDataReader.getTestData(TESTDATA_MACHINE_TYPE),
+                TestDataReader.getTestData(TESTDATA_GPU_TYPE),
+                TestDataReader.getTestData(TESTDATA_NUMBER_OF_GPUS),
+                TestDataReader.getTestData(TESTDATA_LOCAL_SSD),
+                TestDataReader.getTestData(TESTDATA_DATACENTER_LOCATION),
+                TestDataReader.getTestData(TESTDATA_COMMITTED_USAGE));
     }
 }

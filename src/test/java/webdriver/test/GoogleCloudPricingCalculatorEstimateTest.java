@@ -50,7 +50,7 @@ public class GoogleCloudPricingCalculatorEstimateTest {
 
     @Test
     public void checkEstimateTotalCost() {
-        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(false), "Total Estimated Cost: USD 1,082.77 per 1 month");
+        Assert.assertEquals(googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(false), "Total Estimated Cost: USD 6,969.49 per 1 month");
     }
 
     @AfterTest(alwaysRun = true)
