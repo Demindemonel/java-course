@@ -85,10 +85,11 @@ public class PastebinHomePage extends AbstractPage {
         return this;
     }
 
-    public void clickCreateNewPasteButton() {
+    public PastebinHomePage clickCreateNewPasteButton() {
         ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, createNewPasteButton);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(createNewPasteButton));
         createNewPasteButton.click();
+        return this;
     }
 
     public String getPasteTextAfterPasteCreation() {

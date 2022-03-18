@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console">
+            <PatternLayout>
+                <Pattern>%d %p %c{2} [%t] %l %m%n</Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="File" fileName="target/logs/github-automation.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{2} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+1) @BeforeTest, @AfterTest, @Test(description="что делает тест")
+2) Assert.asds(что, с чем, сообщение об ошибке) - добавить сообщение об ошибке
+3) настроить codestyle на перенос длинных строк
+4) разбить и связать через dependsOnMethods ЛИБО переименовать browserSetup, чтобы "прочитал название метода и понял, что он значит
+<!--5) посмотреть какой-нибудь selenium adblock (когда-нибудь мб) -->
+<!--6) вынести повторение с дропдаунами в отдельный метод типа methodName(WebElement,searchedText);-->

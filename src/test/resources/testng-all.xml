@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Smoke">
+    <test name = "GoogleCloudPricingCalculatorEstimateTest">
+        <classes>
+            <class name = "webdriver.test.GoogleCloudPricingCalculatorEstimateTest" />
+        </classes>
+    </test>
+    <test name = "GoogleCloudPricingCalculatorEstimateEmailTest">
+        <classes>
+            <class name = "webdriver.test.GoogleCloudPricingCalculatorEstimateEmailTest" />
+        </classes>
+    </test>
+</suite>
