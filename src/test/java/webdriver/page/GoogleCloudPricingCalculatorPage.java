@@ -61,41 +61,112 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
         return null;
     }
 
-    public GoogleCloudPricingCalculatorEstimatePage fillForm(ComputerEngine computerEngine) {
+    public GoogleCloudPricingCalculatorPage switchToCalculatorFrame(){
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe")));
         driver.switchTo().frame("myFrame");
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectComputerEngineOption(){
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(computeEngineOption));
         computeEngineOption.click();
+        return this;
+    }
 
+    public GoogleCloudPricingCalculatorPage fillNumberOfInstancesField(String numberOfInstances){
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(numberOfInstancesField));
         numberOfInstancesField.click();
-        numberOfInstancesField.sendKeys(computerEngine.getNumberOfInstances());
+        numberOfInstancesField.sendKeys(numberOfInstances);
+        return this;
+    }
 
-        selectDropdownOption(operationSystemSoftwareDropdown, computerEngine.getOperationSystemSoftware());
-        selectDropdownOption(machineClassDropdown, computerEngine.getMachineClass());
-        selectDropdownOption(machineFamilyDropdown, computerEngine.getMachineFamily());
-        selectDropdownOption(seriesDropdown, computerEngine.getSeries());
-        selectDropdownOption(machineTypeDropdown, computerEngine.getMachineType());
+    public GoogleCloudPricingCalculatorPage selectOperationSystemSoftwareDropdownOption(String operationSystemSoftware){
+        selectDropdownOption(operationSystemSoftwareDropdown, operationSystemSoftware);
+        return this;
+    }
 
+    public GoogleCloudPricingCalculatorPage selectMachineClassDropdownOption(String machineClass){
+        selectDropdownOption(machineClassDropdown, machineClass);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectMachineFamilyDropdownOption(String machineFamily){
+        selectDropdownOption(machineFamilyDropdown, machineFamily);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectSeriesDropdownOption(String series){
+        selectDropdownOption(seriesDropdown, series);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectMachineTypeDropdownOption(String machineType){
+        selectDropdownOption(machineTypeDropdown, machineType);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage checkAddGPUsCheckbox(){
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addGPUsCheckbox));
         addGPUsCheckbox.click();
+        return this;
+    }
 
-        selectDropdownOption(GPUTypeDropdown, computerEngine.getGPUType());
-        selectDropdownOption(numberOfGPUsDropdown, computerEngine.getNumberOfGPUs());
-        selectDropdownOption(localSSDDropdown, computerEngine.getLocalSSD());
-        selectDropdownOption(datacenterLocationDropdown, computerEngine.getDatacenterLocation());
-        selectDropdownOption(committedUsageDropdown, computerEngine.getCommittedUsage());
+    public GoogleCloudPricingCalculatorPage selectGPUTypeDropdownOption(String GPUType){
+        selectDropdownOption(GPUTypeDropdown, GPUType);
+        return this;
+    }
 
+    public GoogleCloudPricingCalculatorPage selectNumberOfGPUsDropdownOption(String numberOfGPUs){
+        selectDropdownOption(numberOfGPUsDropdown, numberOfGPUs);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectLocalSSDDropdownOption(String localSSD){
+        selectDropdownOption(localSSDDropdown, localSSD);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectDatacenterLocationDropdownOption(String datacenterLocation){
+        selectDropdownOption(datacenterLocationDropdown, datacenterLocation);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorPage selectCommittedUsageDropdownOption(String committedUsage){
+        selectDropdownOption(committedUsageDropdown, committedUsage);
+        return this;
+    }
+
+    public GoogleCloudPricingCalculatorEstimatePage clickAddToEstimateButton() {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(addToEstimateButton));
         addToEstimateButton.click();
-
         return new GoogleCloudPricingCalculatorEstimatePage(driver);
     }
 
-    private void selectDropdownOption(WebElement dropdownSelector, String dropdownOptionText){
+    public GoogleCloudPricingCalculatorEstimatePage fillForm(ComputerEngine computerEngine){
+        return switchToCalculatorFrame()
+                .selectComputerEngineOption()
+                .fillNumberOfInstancesField(computerEngine.getNumberOfInstances())
+                .selectComputerEngineOption()
+                .selectOperationSystemSoftwareDropdownOption(computerEngine.getOperationSystemSoftware())
+                .selectMachineClassDropdownOption(computerEngine.getMachineClass())
+                .selectMachineFamilyDropdownOption(computerEngine.getMachineFamily())
+                .selectSeriesDropdownOption(computerEngine.getSeries())
+                .selectMachineTypeDropdownOption(computerEngine.getMachineType())
+                .checkAddGPUsCheckbox()
+                .selectGPUTypeDropdownOption(computerEngine.getGPUType())
+                .selectNumberOfGPUsDropdownOption(computerEngine.getNumberOfGPUs())
+                .selectLocalSSDDropdownOption(computerEngine.getLocalSSD())
+                .selectDatacenterLocationDropdownOption(computerEngine.getDatacenterLocation())
+                .selectCommittedUsageDropdownOption(computerEngine.getCommittedUsage())
+                .clickAddToEstimateButton();
+    }
+
+    private void selectDropdownOption(WebElement dropdownSelector, String dropdownOptionText) {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(dropdownSelector));
         dropdownSelector.click();
-        WebElement dropdownOption = driver.findElement(By.xpath("//*[@id='" + dropdownSelector.getAttribute("aria-owns") + "']//md-option[contains(.,'" + dropdownOptionText + "')]"));
+        WebElement dropdownOption = driver.findElement(
+                By.xpath("//*[@id='" + dropdownSelector.getAttribute("aria-owns") + "']" +
+                        "//md-option[contains(.,'" + dropdownOptionText + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(dropdownOption));
         dropdownOption.click();
     }

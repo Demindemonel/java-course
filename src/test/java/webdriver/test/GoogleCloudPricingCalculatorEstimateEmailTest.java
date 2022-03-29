@@ -1,26 +1,20 @@
 package webdriver.test;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import webdriver.driver.DriverSingleton;
 import webdriver.page.*;
 import webdriver.service.ComputerEngineCreator;
 
 import java.util.ArrayList;
 
-public class GoogleCloudPricingCalculatorEstimateEmailTest {
-
-    private WebDriver driver;
+public class GoogleCloudPricingCalculatorEstimateEmailTest extends CommonConditions{
     private YopmailGeneratedEmailMailboxPage yopmailGeneratedEmailMailboxPage;
     private String totalEstimateCost;
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeTest(description = "Filling out the order and sending the invoice to the email.")
     public void testEnvironmentSetup() {
-        driver = DriverSingleton.getDriver();
         GoogleCloudPricingCalculatorEstimatePage googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
@@ -42,15 +36,11 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest {
                 .getTheLatestMailFromGoogleCloudPricingCalculator();
     }
 
-    @Test
+    @Test(description = "Comparison of the total estimate monthly amount from the calculator and from the mail.")
     public void checkTotalEstimateMonthlyCoast() {
         Assert.assertEquals(
                 yopmailGeneratedEmailMailboxPage.getTotalEstimateMonthlyCoastField(),
-                totalEstimateCost);
-    }
-
-    @AfterTest(alwaysRun = true)
-    public void browserTearDown() {
-        DriverSingleton.closeDriver();
+                totalEstimateCost,
+                "The value of the \"Total estimate monthly amount\" field from Yopmail doesn't match the value of the \"Estimate total cost\" field from the Google Cloud Pricing Calculator Estimate page.");
     }
 }

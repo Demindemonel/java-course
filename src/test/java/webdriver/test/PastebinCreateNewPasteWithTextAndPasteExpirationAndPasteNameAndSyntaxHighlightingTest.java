@@ -17,7 +17,7 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSynt
     private final String pasteText = "git config --global user.name \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force";
     private final String pasteName = "how to gain dominance among developers";
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeTest(alwaysRun = true, description = "Setting up a test environment.")
     public void browserSetup() {
         driver = DriverSingleton.getDriver();
 
@@ -32,22 +32,31 @@ public class PastebinCreateNewPasteWithTextAndPasteExpirationAndPasteNameAndSynt
         new WebDriverWait(driver, pastebinHomePage.WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.source")));
     }
 
-    @Test
+    @Test(description = "Pastebin title validation after creation")
     public void GetPastebinPageTitleAfterPasteCreation() {
-        Assert.assertEquals(driver.getTitle(), pasteName + " - Pastebin.com", "Title after paste creation is wrong.");
+        Assert.assertEquals(
+                driver.getTitle(),
+                pasteName + " - Pastebin.com",
+                "Title after paste creation is wrong.");
     }
 
-    @Test
+    @Test(description = "Check Pastebin highlighted code after creation.")
     public void GetHighlightedCodeAfterPasteCreation() {
-        Assert.assertEquals(pastebinHomePage.getHighlightedCodeAfterPasteCreation(), "Bash", "Highlighted code after paste creation is wrong.");
+        Assert.assertEquals(
+                pastebinHomePage.getHighlightedCodeAfterPasteCreation(),
+                "Bash",
+                "Highlighted code after paste creation is wrong.");
     }
 
-    @Test
+    @Test(description = "Pastebin paste text validation after creation.")
     public void GetPastebinPasteTextAfterPasteCreation() {
-        Assert.assertEquals(pastebinHomePage.getPasteTextAfterPasteCreation(), pasteText, "Paste text after paste creation is wrong.");
+        Assert.assertEquals(
+                pastebinHomePage.getPasteTextAfterPasteCreation(),
+                pasteText,
+                "Paste text after paste creation is wrong.");
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterTest(alwaysRun = true, description = "Shutting down the WebDriver instance.")
     public void browserTearDown() {
         DriverSingleton.closeDriver();
     }
