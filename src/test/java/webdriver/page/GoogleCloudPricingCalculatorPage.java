@@ -52,6 +52,9 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//button[@aria-label='Add to Estimate']")
     private WebElement addToEstimateButton;
 
+    @FindBy(css = ".devsite-snackbar-action")
+    private WebElement acceptCookieButton;
+
     protected GoogleCloudPricingCalculatorPage(WebDriver driver) {
         super(driver);
     }
@@ -169,5 +172,11 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
                         "//md-option[contains(.,'" + dropdownOptionText + "')]"));
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(dropdownOption));
         dropdownOption.click();
+    }
+
+    public GoogleCloudPricingCalculatorPage clickAcceptCookieButton(){
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(acceptCookieButton));
+        acceptCookieButton.click();
+        return this;
     }
 }

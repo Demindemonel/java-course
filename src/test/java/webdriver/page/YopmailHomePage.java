@@ -12,6 +12,9 @@ public class YopmailHomePage extends AbstractPage {
     @FindBy(xpath = "//*[@id='listeliens']/a[@href='email-generator']")
     private WebElement randomEmailButton;
 
+    @FindBy(id = "accept")
+    private WebElement acceptCookieButton;
+
     public YopmailHomePage(WebDriver driver) {
         super(driver);
     }
@@ -27,5 +30,11 @@ public class YopmailHomePage extends AbstractPage {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(randomEmailButton));
         randomEmailButton.click();
         return new YopmailGeneratedEmailPage(driver);
+    }
+
+    public YopmailHomePage clickAcceptCookieButton(){
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(acceptCookieButton));
+        acceptCookieButton.click();
+        return this;
     }
 }

@@ -18,6 +18,7 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest extends CommonConditi
         GoogleCloudPricingCalculatorEstimatePage googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
+                .clickAcceptCookieButton()
                 .fillForm(ComputerEngineCreator.withSettingByDefault())
                 .openEmailEstimate();
         totalEstimateCost = googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(true);
@@ -25,7 +26,7 @@ public class GoogleCloudPricingCalculatorEstimateEmailTest extends CommonConditi
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 
         driver.switchTo().window(tabs.get(1));
-        YopmailGeneratedEmailPage yopmailGeneratedEmailPage = new YopmailHomePage(driver).openPage().generateEmail();
+        YopmailGeneratedEmailPage yopmailGeneratedEmailPage = new YopmailHomePage(driver).openPage().clickAcceptCookieButton().generateEmail();
         String generatedEmail = yopmailGeneratedEmailPage.getGeneratedEmail();
 
         driver.switchTo().window(tabs.get(0));

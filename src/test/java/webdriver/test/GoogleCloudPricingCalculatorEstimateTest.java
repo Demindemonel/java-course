@@ -15,6 +15,7 @@ public class GoogleCloudPricingCalculatorEstimateTest extends CommonConditions {
         googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
                 .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
+                .clickAcceptCookieButton()
                 .fillForm(ComputerEngineCreator.withSettingByDefault());
     }
 
