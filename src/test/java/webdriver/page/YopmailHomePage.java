@@ -32,9 +32,11 @@ public class YopmailHomePage extends AbstractPage {
         return new YopmailGeneratedEmailPage(driver);
     }
 
-    public YopmailHomePage clickAcceptCookieButton(){
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(acceptCookieButton));
-        acceptCookieButton.click();
+    public YopmailHomePage clickAcceptCookieButton() {
+        try {
+            new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(acceptCookieButton));
+            acceptCookieButton.click();
+        } catch (Exception ignored) { }
         return this;
     }
 }

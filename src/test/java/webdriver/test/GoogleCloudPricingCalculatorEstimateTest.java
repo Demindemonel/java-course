@@ -3,6 +3,7 @@ package webdriver.test;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import webdriver.service.BusinessGoogleCloudPricingCalculator;
 import webdriver.page.GoogleCloudHomePage;
 import webdriver.page.GoogleCloudPricingCalculatorEstimatePage;
 import webdriver.service.ComputerEngineCreator;
@@ -12,10 +13,11 @@ public class GoogleCloudPricingCalculatorEstimateTest extends CommonConditions {
 
     @BeforeTest(description = "Filling out the order")
     public void testEnvironmentSetup() {
-        googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
+        googleCloudPricingCalculatorEstimatePage = new BusinessGoogleCloudPricingCalculator(new GoogleCloudHomePage(driver)
+                .openPage()
                 .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
-                .clickAcceptCookieButton()
+                .clickAcceptCookieButton())
                 .fillForm(ComputerEngineCreator.withSettingByDefault());
     }
 

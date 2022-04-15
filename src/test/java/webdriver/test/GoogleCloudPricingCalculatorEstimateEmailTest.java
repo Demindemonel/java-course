@@ -4,21 +4,23 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import webdriver.service.BusinessGoogleCloudPricingCalculator;
 import webdriver.page.*;
 import webdriver.service.ComputerEngineCreator;
 
 import java.util.ArrayList;
 
-public class GoogleCloudPricingCalculatorEstimateEmailTest extends CommonConditions{
+public class GoogleCloudPricingCalculatorEstimateEmailTest extends CommonConditions {
     private YopmailGeneratedEmailMailboxPage yopmailGeneratedEmailMailboxPage;
     private String totalEstimateCost;
 
     @BeforeTest(description = "Filling out the order and sending the invoice to the email.")
     public void testEnvironmentSetup() {
-        GoogleCloudPricingCalculatorEstimatePage googleCloudPricingCalculatorEstimatePage = new GoogleCloudHomePage(driver).openPage()
+        GoogleCloudPricingCalculatorEstimatePage googleCloudPricingCalculatorEstimatePage = new BusinessGoogleCloudPricingCalculator(new GoogleCloudHomePage(driver)
+                .openPage()
                 .searchForText("Google Cloud Pricing Calculator")
                 .getSearchResultByText()
-                .clickAcceptCookieButton()
+                .clickAcceptCookieButton())
                 .fillForm(ComputerEngineCreator.withSettingByDefault())
                 .openEmailEstimate();
         totalEstimateCost = googleCloudPricingCalculatorEstimatePage.getEstimateTotalCost(true);
